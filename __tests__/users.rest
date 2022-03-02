@@ -11,12 +11,12 @@ content-type: application/json
 
 ###
 
-POST http://localhost:3600/login
+POST http://localhost:3600/users/login
 content-type: application/json
 
 {
 "name": "Pepe",
-  "passwd": "12345",
+  "passwd": "12345"
 }
 
 ###

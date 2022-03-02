@@ -1,5 +1,4 @@
 import { verifyToken } from '../services/auth.js';
-import { Task } from '../index.js';
 
 export const loginRequired = (req, res, next) => {
     const authorization = req.get('authorization');
@@ -21,17 +20,35 @@ export const loginRequired = (req, res, next) => {
     }
 };
 
-// eslint-disable-next-line no-unused-vars
-export const userRequired = async (req, res, next) => {
-    const taskId = req.params.id;
-    const userId = req.tokenPayload.id;
-    const task = await Task.findById(taskId);
-    console.log(task, userId);
-    if (task.responsible.toString() === userId) {
+export const adminRequired = async (req, res, next) => {
+    const userRole = req.tokenPayload.isAdmin;
+    if (userRole === true) {
         next();
     } else {
         const userError = new Error('not authorized user');
         userError.status = 401;
         next(userError);
+    }
+};
+
+export const protectRoute = (req, res, next) => {
+    const authorization = req.get('authorization');
+    let token;
+    let decodedToken;
+    try {
+        if (authorization && authorization.toLowerCase().startsWith('bearer')) {
+            token = authorization.substring(7);
+            decodedToken = verifyToken(token);
+            if (typeof decodedToken === 'string') {
+                throw new Error();
+            }
+            next();
+        } else {
+            throw new Error();
+        }
+    } catch (error) {
+        res.status(401).json({
+            error: 'token missing or invalid',
+        });
     }
 };

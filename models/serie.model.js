@@ -9,4 +9,4 @@ const serieSchema = new mongoose.Schema({
     },
 });
 
-export const User = mongoose.model('series', serieSchema);
+export const Serie = mongoose.model('series', serieSchema);
