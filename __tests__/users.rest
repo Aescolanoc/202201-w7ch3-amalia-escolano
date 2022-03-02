@@ -1,0 +1,24 @@
+POST http://localhost:3600/users/register
+content-type: application/json
+
+{
+  "name": "Pepe",
+  "passwd": "12345",
+  "isAdmin": true,
+  "watchedSeries": []
+
+}
+
+###
+
+POST http://localhost:3600/login
+content-type: application/json
+
+{
+"name": "Pepe",
+  "passwd": "12345",
+}
+
+###
+
+GET http://localhost:3600/users
