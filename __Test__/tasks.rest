@@ -1,0 +1,28 @@
+PUT http://localhost:3600/platforms/6220b336ce79c7af0635f1e6 HTTP/1.1
+Content-Type: application/xml
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQW5hIiwiaWF0IjoxNjQ2MzI5NzE4fQ.19qGZzNIeM2Q-wu6T8CBQhgymvCREkSyyUSmNDFRss0
+
+{
+    "name": "plataforma modificada"
+}
+
+###
+GET http://localhost:3600/series/viewed HTTP/1.1
+Content-Type: application/xml
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQW5hIiwiaWF0IjoxNjQ2MzI5NzE4fQ.19qGZzNIeM2Q-wu6T8CBQhgymvCREkSyyUSmNDFRss0
+
+
+###
+GET http://localhost:3600/series/pending HTTP/1.1
+Content-Type: application/xml
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVpcyIsImlhdCI6MTY0NjMyODg0NX0.mYJQqnNIlF3EN8U4AcpFKa0FpLHHF3dE2lNM3H1DzMw
+
+###
+PUT http://localhost:3600/series/6221072df797c4ff0585a9e9
+Content-Type: application/xml
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQW5hIiwiaWF0IjoxNjQ2MzI5NzE4fQ.19qGZzNIeM2Q-wu6T8CBQhgymvCREkSyyUSmNDFRss0
+
+{
+    "name": "Serie Modificada"
+}
+###
