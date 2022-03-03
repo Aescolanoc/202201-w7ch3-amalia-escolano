@@ -27,3 +27,13 @@ export const deleteSerie = (req, res) => {
         }
     });
 };
+
+export const updateSerie = async (req, res, next) => {
+    try {
+        const resp = crud.updateSerie(req.params.id, req.body, Serie);
+
+        res.json(resp);
+    } catch (error) {
+        next(error);
+    }
+};

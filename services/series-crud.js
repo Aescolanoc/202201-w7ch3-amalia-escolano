@@ -10,3 +10,9 @@ export async function insertSerie(serie, Serie) {
 export async function deleteSerie(id, Serie) {
     return await Serie.findByIdAndDelete(id);
 }
+
+export async function updateSerie(id, partialSerie, Serie) {
+    return await Serie.findByIdAndUpdate(id, partialSerie, {
+        new: true,
+    });
+}

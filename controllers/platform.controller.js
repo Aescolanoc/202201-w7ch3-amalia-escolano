@@ -10,23 +10,30 @@ export const getAllPlatforms = async (req, res, next) => {
     }
 };
 
-export const insertPlatform = (req, res, next) => {
+export const insertPlatform = async (req, res, next) => {
     try {
-        const resp = crud.insertPlatform(req.body, Platform);
+        const resp = await crud.insertPlatform(req.body, Platform);
         res.json(resp);
     } catch (error) {
         next(error);
     }
 };
 
-export const deletePlatform = (req, res) => {
-    crud.deletePlatform(req.params.id, Platform).then((resp) => {
-        if (resp) {
-            res.status(202);
-            res.json(resp);
-        } else {
-            res.status(204);
-            res.json({ message: 'Platform not found' });
-        }
-    });
+export const deletePlatform = async (req, res, next) => {
+    try {
+        const resp = await crud.deletePlatform(req.params.id, Platform);
+        res.json(resp);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const updatePlatform = async (req, res, next) => {
+    try {
+        const resp = crud.updatePlatform(req.params.id, req.body, Platform);
+
+        res.json(resp);
+    } catch (error) {
+        next(error);
+    }
 };

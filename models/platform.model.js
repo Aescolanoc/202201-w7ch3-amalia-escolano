@@ -11,4 +11,10 @@ export const platformSchema = new mongoose.Schema({
     ],
 });
 
+platformSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        delete returnedObject.__v;
+    },
+});
+
 export const Platform = mongoose.model('Platform', platformSchema);

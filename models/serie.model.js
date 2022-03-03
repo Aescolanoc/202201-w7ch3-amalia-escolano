@@ -9,4 +9,10 @@ const serieSchema = new mongoose.Schema({
     },
 });
 
+serieSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        delete returnedObject.__v;
+    },
+});
+
 export const Serie = mongoose.model('Serie', serieSchema);

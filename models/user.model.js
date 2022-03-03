@@ -10,7 +10,14 @@ export const userSchema = new mongoose.Schema({
             ref: 'Serie',
         },
     ],
+    unWatchedSeries: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Serie',
+        },
+    ],
 });
+
 userSchema.set('toJSON', {
     transform: (document, returnedObject) => {
         delete returnedObject.__v;
