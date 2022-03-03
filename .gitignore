@@ -2,6 +2,7 @@
 .vscode/
 .scannerwork/
 package-lock.json
+__test__/
 
 # Logs
 logs
