@@ -21,14 +21,31 @@ export const loginRequired = (req, res, next) => {
 };
 
 export const adminRequired = async (req, res, next) => {
-    const userRole = req.tokenPayload.isAdmin;
-    if (userRole === true) {
-        next();
+    const authorization = req.get('authorization');
+    let token;
+    const tokenError = new Error('token missing or invalid');
+    tokenError.status = 401;
+    let decodedToken;
+    if (authorization && authorization.toLowerCase().startsWith('bearer')) {
+        token = authorization.substring(7);
+        decodedToken = verifyToken(token);
+        if (!decodedToken.isAdmin) {
+            next(tokenError);
+        } else {
+            req.tokenPayload = decodedToken;
+            next();
+        }
     } else {
-        const userError = new Error('not authorized user');
-        userError.status = 401;
-        next(userError);
+        next(tokenError);
     }
+    // const userRole = req.tokenPayload.isAdmin;
+    // if (userRole) {
+    //     next();
+    // } else {
+    //     const userError = new Error('not authorized user');
+    //     userError.status = 401;
+    //     next(userError);
+    // }
 };
 
 export const protectRoute = (req, res, next) => {

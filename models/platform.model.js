@@ -6,9 +6,9 @@ export const platformSchema = new mongoose.Schema({
     series: [
         {
             type: mongoose.Types.ObjectId,
-            ref: 'series',
+            ref: 'Serie',
         },
     ],
 });
 
-export const Platform = mongoose.model('platforms', platformSchema);
+export const Platform = mongoose.model('Platform', platformSchema);

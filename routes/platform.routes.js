@@ -1,14 +1,17 @@
 import express from 'express';
-import { adminRequired, loginRequired } from '../middlewares/interceptors.js';
+import { loginRequired } from '../middlewares/interceptors.js';
 import {
     deletePlatform,
-    getAllPlatform,
+    getAllPlatforms,
     insertPlatform,
-} from '../services/platforms-crud.js';
+} from '../controllers/platform.controller.js';
 const router = express.Router();
 
-router.post('/', loginRequired, adminRequired, insertPlatform);
-router.get('/', loginRequired, getAllPlatform);
-router.delete('/:id', loginRequired, adminRequired, deletePlatform);
+router.get('/', loginRequired, getAllPlatforms);
+router.post('/', insertPlatform);
+router.delete('/:id', deletePlatform);
+
+// router.post('/', loginRequired, adminRequired, insertPlatform);
+// router.delete('/:id', loginRequired, adminRequired, deletePlatform);
 
 export default router;

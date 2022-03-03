@@ -17,11 +17,13 @@ export const login = async (req, resp, next) => {
                 const token = createToken({
                     name: userToCheck.name,
                     id: userToCheck.id,
+                    isAdmin: userToCheck.isAdmin,
                 });
                 resp.json({
                     token,
                     userName: userToCheck.name,
                     id: userToCheck.id,
+                    isAdmin: userToCheck.isAdmin,
                 });
             } else {
                 next(new Error(loginError));

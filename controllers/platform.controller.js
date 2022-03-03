@@ -1,7 +1,7 @@
 import * as crud from '../services/platforms-crud.js';
 import { Platform } from '../models/platform.model.js';
 
-export const getAllPlatform = async (req, res, next) => {
+export const getAllPlatforms = async (req, res, next) => {
     try {
         const resp = await crud.getAllPlatforms(Platform);
         res.json(resp);
@@ -10,10 +10,13 @@ export const getAllPlatform = async (req, res, next) => {
     }
 };
 
-export const insertPlatform = (req, res) => {
-    crud.insertPlatform(req.body, Platform).then((resp) => {
+export const insertPlatform = (req, res, next) => {
+    try {
+        const resp = crud.insertPlatform(req.body, Platform);
         res.json(resp);
-    });
+    } catch (error) {
+        next(error);
+    }
 };
 
 export const deletePlatform = (req, res) => {

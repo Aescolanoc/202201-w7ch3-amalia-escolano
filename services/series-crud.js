@@ -1,10 +1,10 @@
 export async function getAllSeries(Serie) {
-    return await Serie.find({});
+    return await Serie.find({}).populate('platform', { name: 1 });
 }
 
 export async function insertSerie(serie, Serie) {
-    const newSerie = new Serie(Serie);
-    return await newSerie.save();
+    const newPlatform = new Serie(serie);
+    return await newPlatform.save();
 }
 
 export async function deleteSerie(id, Serie) {

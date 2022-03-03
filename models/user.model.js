@@ -7,15 +7,15 @@ export const userSchema = new mongoose.Schema({
     watchedSeries: [
         {
             type: mongoose.Types.ObjectId,
-            ref: 'series',
+            ref: 'Serie',
         },
     ],
 });
-// userSchema.set('toJSON', {
-//     transform: (document, returnedObject) => {
-//         delete returnedObject.__v;
-//         delete returnedObject.passwd;
-//     },
-// });
+userSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        delete returnedObject.__v;
+        delete returnedObject.passwd;
+    },
+});
 
 export const User = mongoose.model('users', userSchema);

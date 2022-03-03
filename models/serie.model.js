@@ -5,8 +5,8 @@ const serieSchema = new mongoose.Schema({
     genre: { type: String, required: true },
     platform: {
         type: mongoose.Types.ObjectId,
-        ref: 'series',
+        ref: 'Platform',
     },
 });
 
-export const Serie = mongoose.model('series', serieSchema);
+export const Serie = mongoose.model('Serie', serieSchema);

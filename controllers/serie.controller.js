@@ -1,7 +1,7 @@
 import * as crud from '../services/series-crud.js';
-import { Serie } from '../models/platform.model.js';
+import { Serie } from '../models/serie.model.js';
 
-export const getAllSerie = async (req, res, next) => {
+export const getAllSeries = async (req, res, next) => {
     try {
         const resp = await crud.getAllSeries(Serie);
         res.json(resp);
